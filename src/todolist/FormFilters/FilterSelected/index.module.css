@@ -1,0 +1,24 @@
+.filterSelected {
+  display: flex;
+  width: 180px;
+  height: 30px;
+  margin: 5px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  transition: 0.2s background ease-out, 0.2s color ease-out;
+}
+.filterSelected:hover {
+  background-color: silver;
+}
+.filterSelected.selected {
+  background-color: black;
+  color: white;
+}
+
+.textFilter {
+  padding-left: 10px;
+}
+.numFilter {
+  padding-right: 10px;
+}

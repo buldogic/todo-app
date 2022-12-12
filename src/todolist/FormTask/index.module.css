@@ -1,0 +1,44 @@
+.formTask {
+  width: 400px;
+  height: 45px;
+  box-shadow: 2px 4px 7px silver;
+  border-radius: 0px 15px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+
+
+}
+
+.task {
+  width: 340px;
+  border: none;
+  border-right: solid silver;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  outline: none;
+}
+/* .task:focus {
+  background-color: black;
+  color: white;
+} */
+
+.button {
+  border: none;
+  border-radius: 0px 15px 0px 0px;
+  width: 60px;
+  transition: 0.2s background-color ease-out;
+}
+.button:hover {
+  color: white;
+  background-color: rgb(152, 151, 151);
+}
+.button:active {
+  background-color: black;
+  color: white;
+}
+.button:disabled {
+  cursor: not-allowed;
+  color: white;
+  background-color: rgb(152, 151, 151);
+}

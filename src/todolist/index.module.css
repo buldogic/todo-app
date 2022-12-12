@@ -1,0 +1,13 @@
+.bodyToDo {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo {
+  display: flex;
+  width: 600px;
+  height: 450px;
+  box-shadow: 0px 0px 10px -3px;
+  border-radius: 15px;
+}
