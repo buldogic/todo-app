@@ -1,6 +1,7 @@
 import React from "react";
 import { FormTask } from "../FormTask";
 import cn from "classnames";
+import TextareaAutosize from "react-textarea-autosize";
 import style from "./index.module.css";
 
 export function ListToDo(props) {
@@ -20,15 +21,16 @@ export function ListToDo(props) {
             className={cn(style.check, task.isDone ? style.done : style.unDone)}
           ></div>
 
-          <input
+          <TextareaAutosize 
             className={style.input}
             value={task.name}
             onChange={(e) => props.setName(index, e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                e.target.blur();
-              }
-            }}
+            onBlur={() => props.setName(index, task.name.trim())}
+            // onKeyPress={(e) => {
+            //   if (e.key === "Enter") {
+            //     e.target.blur();
+            //   }
+            // }}
           />
 
           <div
