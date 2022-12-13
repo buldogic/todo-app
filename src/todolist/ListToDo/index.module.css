@@ -6,6 +6,7 @@
 }
 .formTaskSearch {
   position: relative;
+  z-index: 2;
 }
 
 .textRecords {
@@ -21,12 +22,11 @@
 .task {
   display: flex;
   width: 380px;
-
   border-radius: 5px;
   align-items: flex-start;
   margin: 5px 9px;
   box-shadow: 1px 1px 8px rgb(148, 146, 146);
-  padding: 0 8px;
+  padding: 2px 8px;
 
   animation-name: appear;
   animation-duration: 200ms;
@@ -89,12 +89,9 @@
 }
 
 .input {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
   border: none;
   outline: none;
+  resize: none;
   flex: auto;
   padding: 6px;
   transition: 0.2s transform ease-in;
