@@ -1,9 +1,16 @@
-import React from "react";
 import { FilterSelected } from "./FilterSelected";
 
 import style from "./index.module.css";
 
-export function FormFilters(props) {
+type Props = {
+  selectedType: null | boolean;
+  setSelectedType: (type: null | boolean) => void;
+  countAll: number;
+  countActive: number;
+  countCompleted: number;
+};
+
+export function FormFilters(props: Props) {
   const isSelectedAll = props.selectedType === null;
   const isSelectedActive = props.selectedType === false;
   const isSelectedCompleted = props.selectedType === true;

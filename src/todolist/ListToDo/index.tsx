@@ -1,10 +1,19 @@
-import React from "react";
 import { FormTask } from "../FormTask";
 import cn from "classnames";
 import TextareaAutosize from "react-textarea-autosize";
 import style from "./index.module.css";
+import { Task } from "../../../type";
 
-export function ListToDo(props) {
+type Props = {
+  tasks: Task[];
+  selectedType: boolean | null;
+  setTasks: (task: Task[]) => void;
+  deleteTask: (index: number) => void;
+  setName: (index: number, name: string) => void;
+  toggle: (index: number) => void;
+};
+
+export function ListToDo(props: Props) {
   const result = props.tasks
     .filter((task) => {
       const isOk =
@@ -21,16 +30,11 @@ export function ListToDo(props) {
             className={cn(style.check, task.isDone ? style.done : style.unDone)}
           ></div>
 
-          <TextareaAutosize 
+          <TextareaAutosize
             className={style.input}
             value={task.name}
             onChange={(e) => props.setName(index, e.target.value)}
             onBlur={() => props.setName(index, task.name.trim())}
-            // onKeyPress={(e) => {
-            //   if (e.key === "Enter") {
-            //     e.target.blur();
-            //   }
-            // }}
           />
 
           <div
