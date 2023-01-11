@@ -1,8 +1,15 @@
-import React from "react";
+
 import cn from "classnames";
 import style from "./index.module.css";
 
-export function FilterSelected(props) {
+type Props ={
+onClick: ()=> void
+text: string
+num: number
+isSelected: boolean
+}
+
+export function FilterSelected(props: Props) {
   return (
     <div
       onClick={() => {

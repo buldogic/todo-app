@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from "react";
-
+import { useState, useEffect } from "react";
 import { FormFilters } from "./FormFilters";
 import { ListToDo } from "./ListToDo";
 import style from "./index.module.css";
+import { Task } from "../../type";
 
 const TASK_LS_KEY = "tasks";
 
-const initialTasks = JSON.parse(localStorage.getItem(TASK_LS_KEY)) ?? [];
+
+
+const getInitialTasks = () => {
+  const data = localStorage.getItem(TASK_LS_KEY);
+  if (data === null) {
+    return [];
+  }
+
+  return JSON.parse(data) as Task[];
+};
 
 export function TodoList() {
-  const [tasks, setTasks] = useState(initialTasks);
-  const [selectedType, setSelectedType] = useState(null);
+  const [tasks, setTasks] = useState(getInitialTasks);
+  const [selectedType, setSelectedType] = useState< null| boolean>(null);
 
   useEffect(() => {
     // storing input name
     localStorage.setItem(TASK_LS_KEY, JSON.stringify(tasks));
   }, [tasks]);
 
-  const setName = (index, newName) => {
+  const setName = (index: number, newName: string) => {
     const newTasks = tasks.map((task, i) => {
       if (i !== index) {
         return task;
@@ -28,7 +37,7 @@ export function TodoList() {
     setTasks(newTasks);
   };
 
-  const toggle = (index) => {
+  const toggle = (index: number) => {
     const newTasks = tasks.map((task, i) => {
       if (i === index) {
         return {
@@ -43,7 +52,7 @@ export function TodoList() {
     setTasks(newTasks);
   };
 
-  const deleteTask = (index) => {
+  const deleteTask = (index: number) => {
     const newTask = tasks.filter((task, i) => {
       return i !== index;
     });

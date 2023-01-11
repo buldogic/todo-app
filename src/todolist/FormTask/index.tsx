@@ -1,8 +1,12 @@
-import React from "react";
 import { useState } from "react";
 import style from "./index.module.css";
 
-export function FormTask(props) {
+type Props = {
+  onAddTask: (value: string) => void;
+
+};
+
+export function FormTask(props: Props) {
   const [value, setValue] = useState("");
 
   const isEmptyText = value.length === 0;
@@ -14,12 +18,6 @@ export function FormTask(props) {
     setValue("");
   };
 
-  const onKeyPress = (e) => {
-    if (e.key === "Enter") {
-      addTask();
-    }
-  };
-
   return (
     <div className={style.formTask}>
       {" "}
@@ -29,7 +27,12 @@ export function FormTask(props) {
         className={style.task}
         placeholder="Task text"
         onChange={(e) => setValue(e.target.value)}
-        onKeyPress={onKeyPress}
+        onKeyPress={(e) => {
+          const key = e.key;
+          if (key === "Enter") {
+            addTask();
+          }
+        }}
       />
       <button className={style.button} onClick={addTask} disabled={isEmptyText}>
         Add
